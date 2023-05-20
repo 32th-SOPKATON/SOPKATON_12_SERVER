@@ -6,8 +6,7 @@ import com.sopkaton.SOPKATON12_SERVER.service.MissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import static com.sopkaton.SOPKATON12_SERVER.common.exception.SuccessStatus.MISSION_CHECK_SUCCESS;
-import static com.sopkaton.SOPKATON12_SERVER.common.exception.SuccessStatus.MISSION_COMPLETE_SUCCESS;
+import static com.sopkaton.SOPKATON12_SERVER.common.exception.SuccessStatus.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,5 +26,10 @@ public class MissionController {
                                           @RequestBody final MissionCompleteDto missionCompleteDto) {
         missionService.complete(userId, missionId, missionCompleteDto.getAnswer());
         return ApiResponseDto.success(MISSION_COMPLETE_SUCCESS);
+    }
+
+    @GetMapping("/mission/ing")
+    public ApiResponseDto getIngMission(@RequestHeader(value = "Authorization") Long userId) {
+        return ApiResponseDto.success(ING_MISSION_INQUIRY_SUCCESS, missionService.getIngMission(userId));
     }
 }

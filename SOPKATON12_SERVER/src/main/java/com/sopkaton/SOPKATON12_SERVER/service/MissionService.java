@@ -1,6 +1,8 @@
 package com.sopkaton.SOPKATON12_SERVER.service;
 
+import com.sopkaton.SOPKATON12_SERVER.controller.dto.response.IngMissionDto;
 import com.sopkaton.SOPKATON12_SERVER.domain.MissionState;
+import com.sopkaton.SOPKATON12_SERVER.domain.State;
 import com.sopkaton.SOPKATON12_SERVER.repository.MissionRepository;
 import com.sopkaton.SOPKATON12_SERVER.repository.MissionStateRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +32,12 @@ public class MissionService {
 
         missionState.done();
         missionState.updateAnswer(answer);
+    }
+
+    public IngMissionDto getIngMission(Long userId) {
+        MissionState missionState = missionStateRepository.findByUserIdAndState(userId, State.DOING)
+                .orElseThrow(() -> new RuntimeException());
+
+        return IngMissionDto.of(missionState.getMission());
     }
 }

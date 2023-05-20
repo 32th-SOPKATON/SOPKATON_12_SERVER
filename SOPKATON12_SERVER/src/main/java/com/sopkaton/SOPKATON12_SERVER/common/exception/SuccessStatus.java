@@ -15,7 +15,8 @@ public enum SuccessStatus {
      */
     MISSION_INQUIRY_SUCCESS(HttpStatus.OK, "미션 조회 성공"),
     MISSION_CHECK_SUCCESS(HttpStatus.OK, "해당 미션 선택 완료"),
-    MISSION_COMPLETE_SUCCESS(HttpStatus.OK, "해당 미션 수행 완료")
+    MISSION_COMPLETE_SUCCESS(HttpStatus.OK, "해당 미션 수행 완료"),
+    ING_MISSION_INQUIRY_SUCCESS(HttpStatus.OK, "진행중인 미션 조회 성공"),
 
     ;
 
