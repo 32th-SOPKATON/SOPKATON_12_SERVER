@@ -15,26 +15,26 @@ public class MissionController {
     private final MissionService missionService;
 
     @PostMapping("/mission/check/{missionId}")
-    public ApiResponseDto checkMission(@RequestHeader(value = "Authorization") Long userId, @PathVariable Long missionId) {
-        missionService.check(userId, missionId);
+    public ApiResponseDto checkMission(@RequestHeader(value = "Authorization") String userId, @PathVariable Long missionId) {
+        missionService.check(Long.valueOf(userId), missionId);
         return ApiResponseDto.success(MISSION_CHECK_SUCCESS);
     }
 
     @PostMapping("/mission/complete/{missionId}")
-    public ApiResponseDto completeMission(@RequestHeader(value = "Authorization") Long userId,
+    public ApiResponseDto completeMission(@RequestHeader(value = "Authorization") String userId,
                                           @PathVariable Long missionId,
                                           @RequestBody final MissionCompleteDto missionCompleteDto) {
-        missionService.complete(userId, missionId, missionCompleteDto.getAnswer());
+        missionService.complete(Long.valueOf(userId), missionId, missionCompleteDto.getAnswer());
         return ApiResponseDto.success(MISSION_COMPLETE_SUCCESS);
     }
 
     @GetMapping("/mission/ing")
-    public ApiResponseDto getIngMission(@RequestHeader(value = "Authorization") Long userId) {
-        return ApiResponseDto.success(ING_MISSION_INQUIRY_SUCCESS, missionService.getIngMission(userId));
+    public ApiResponseDto getIngMission(@RequestHeader(value = "Authorization") String userId) {
+        return ApiResponseDto.success(ING_MISSION_INQUIRY_SUCCESS, missionService.getIngMission(Long.valueOf(userId)));
     }
 
     @GetMapping("/mission/done")
-    public ApiResponseDto getDoneMission(@RequestHeader(value = "Authorization") Long userId) {
-        return ApiResponseDto.success(DONE_MISSION_INQUIRY_SUCCESS, missionService.getDoneMission(userId));
+    public ApiResponseDto getDoneMission(@RequestHeader(value = "Authorization") String userId) {
+        return ApiResponseDto.success(DONE_MISSION_INQUIRY_SUCCESS, missionService.getDoneMission(Long.valueOf(userId)));
     }
 }
