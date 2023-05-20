@@ -32,4 +32,9 @@ public class MissionController {
     public ApiResponseDto getIngMission(@RequestHeader(value = "Authorization") Long userId) {
         return ApiResponseDto.success(ING_MISSION_INQUIRY_SUCCESS, missionService.getIngMission(userId));
     }
+
+    @GetMapping("/mission/done")
+    public ApiResponseDto getDoneMission(@RequestHeader(value = "Authorization") Long userId) {
+        return ApiResponseDto.success(DONE_MISSION_INQUIRY_SUCCESS, missionService.getDoneMission(userId));
+    }
 }
