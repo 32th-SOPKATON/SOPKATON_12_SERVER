@@ -5,7 +5,26 @@
 
 🐣서버 최약 YB : 정홍준
 
-## 역할 분담
+## 응원의 메시지를 담은 파트 팀원들의 사진촬영
+![image](https://github.com/32th-SOPKATON/SOPKATON_12_SERVER/assets/97835512/64e88f90-c67a-4999-b867-705207f3e161)
+* 정홍준 : 서버 최강 YB 지연이 화이팅
+* 신지연 : 성격좋은 홍준쓰와 해서 영광
+
+## 🙋🏻‍♀ 역할 분담
+
+<div markdown="1">  
+ 
+| 기능명 | 담당자 | 완료 여부 |
+| :-----: | :---: | :---: |
+| 프로젝트 세팅 | `지연🍒` |
+| EC2 세팅 | `지연🍒` |
+| RDS 세팅 | `지연🍒` |
+| DB 설계 | `홍준🍑` `지연🍒` |
+| API 명세서 작성 | `홍준🍑` `지연🍒` |
+| API 개발 | `홍준🍑` `지연🍒` |
+ 
+</div>
+ <br>
 
 
 ## Git Convention
@@ -115,5 +134,31 @@
 
 
 ## 프로젝트 구조
-
+  ```
+├── 📂 common
+|   ├── 📂 dto
+|   └── 📂 exception
+├── 📂 controller
+│   ├── MissionController
+│   └── UserController
+├── 📂 domain
+│   ├── User
+│   ├── Mission
+│   └── MissionState
+├── 📂 dto
+│   ├── 📂 request
+│   |   └── 
+│   └── 📂 response
+│   |   └── 
+├── 📂 repository
+│   ├── MissionRepository
+│   ├── MissionStateRepository
+│   └── UserRepository
+├── 📂 service
+│   ├── MissionService
+│   └── UserService
+└─SOPKATON_12_SERVERApplication
+  ```
 ## ERD
+![image](https://github.com/32th-SOPKATON/SOPKATON_12_SERVER/assets/97835512/fd9b30e7-3e65-46c7-99fd-40b85b887dcd)
+
