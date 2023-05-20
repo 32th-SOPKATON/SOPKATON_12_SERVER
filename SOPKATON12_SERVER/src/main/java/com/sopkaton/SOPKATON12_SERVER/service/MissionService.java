@@ -1,6 +1,7 @@
 package com.sopkaton.SOPKATON12_SERVER.service;
 
 import com.sopkaton.SOPKATON12_SERVER.controller.dto.response.IngMissionDto;
+import com.sopkaton.SOPKATON12_SERVER.domain.Mission;
 import com.sopkaton.SOPKATON12_SERVER.domain.MissionState;
 import com.sopkaton.SOPKATON12_SERVER.domain.State;
 import com.sopkaton.SOPKATON12_SERVER.repository.MissionRepository;
@@ -8,6 +9,9 @@ import com.sopkaton.SOPKATON12_SERVER.repository.MissionStateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -34,10 +38,15 @@ public class MissionService {
         missionState.updateAnswer(answer);
     }
 
-    public IngMissionDto getIngMission(Long userId) {
-        MissionState missionState = missionStateRepository.findByUserIdAndState(userId, State.DOING)
-                .orElseThrow(() -> new RuntimeException());
+    public List<IngMissionDto> getIngMission(Long userId) {
+        List<MissionState> missionStates = missionStateRepository.findByUserIdAndState(userId, State.DOING);
+        return missionStates.stream()
+                .map(missionState -> IngMissionDto.of(missionState.getMission())).collect(Collectors.toList());
+    }
 
-        return IngMissionDto.of(missionState.getMission());
+    public List<IngMissionDto> getDoneMission(Long userId) {
+        List<MissionState> missionStates = missionStateRepository.findByUserIdAndState(userId, State.DONE);
+        return missionStates.stream()
+                .map(missionState -> IngMissionDto.of(missionState.getMission())).collect(Collectors.toList());
     }
 }
