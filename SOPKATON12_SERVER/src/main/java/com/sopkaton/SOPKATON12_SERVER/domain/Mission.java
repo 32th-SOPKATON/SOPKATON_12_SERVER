@@ -21,4 +21,3 @@ public class Mission {
     @Column(nullable = false)
     private String content;
 }
-

@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MissionStateRepository extends Repository<MissionState, Long> {
+     int countByUser_IdAndState(Long userId, State state);
+
+     List<MissionState> findByUser_IdAndState(Long userId, State state);
 
      void save(MissionStateRepository missionState);
      Optional<MissionState> findByMissionIdAndUserId(Long missionId, Long userId);

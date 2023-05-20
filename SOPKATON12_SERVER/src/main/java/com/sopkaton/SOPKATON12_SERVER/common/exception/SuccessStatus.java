@@ -19,7 +19,8 @@ public enum SuccessStatus {
     ING_MISSION_INQUIRY_SUCCESS(HttpStatus.OK, "진행중인 미션 조회 성공"),
     DONE_MISSION_INQUIRY_SUCCESS(HttpStatus.OK, "이미 수행한 미션 조회 성공"),
 
-    ;
+    GET_MissionList(HttpStatus.OK, "미션 조회 성공"),
+    COMPLETE_COUNT_SUCCESS(HttpStatus.OK, "완료한 미션 개수 조회 성공");
 
     private final HttpStatus httpStatus;
     private final String message;
