@@ -20,8 +20,8 @@ public class MissionListController {
     private final MissionListService missionListService;
 
     @GetMapping("")
-    public ApiResponseDto<List<MissionDto>> getBeforeMissionsByUserId(@RequestHeader("userId") Long userId) {
-        List<MissionDto> missionDto = missionListService.getBeforeMissionsByUserId(userId);
+    public ApiResponseDto<List<MissionDto>> getBeforeMissionsByUserId(@RequestHeader("userId") String userId) {
+        List<MissionDto> missionDto = missionListService.getBeforeMissionsByUserId(Long.valueOf(userId));
         return ApiResponseDto.success(SuccessStatus.GET_MissionList, missionDto);
     }
 }

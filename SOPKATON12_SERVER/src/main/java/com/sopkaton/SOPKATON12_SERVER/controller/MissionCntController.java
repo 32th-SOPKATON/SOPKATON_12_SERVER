@@ -17,8 +17,8 @@ public class MissionCntController {
     private final MissionCntService missionCntService;
 
     @GetMapping("/count")
-    public ApiResponseDto<Integer> getCompletedMissionCountByUserId(@RequestHeader("userId") Long userId) {
-        int completedMissionCount = missionCntService.getCompletedMissionCountByUserId(userId);
+    public ApiResponseDto<Integer> getCompletedMissionCountByUserId(@RequestHeader("userId") String userId) {
+        int completedMissionCount = missionCntService.getCompletedMissionCountByUserId(Long.valueOf(userId));
         return ApiResponseDto.success(SuccessStatus.COMPLETE_COUNT_SUCCESS, completedMissionCount);
     }
 }
