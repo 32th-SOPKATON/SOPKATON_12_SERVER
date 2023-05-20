@@ -16,6 +16,9 @@ public class Mission {
     private Long Id;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private String content;
 }
 
