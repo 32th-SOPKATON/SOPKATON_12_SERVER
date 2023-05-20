@@ -22,4 +22,13 @@ public class MissionService {
 
         missionState.check();
     }
+
+    @Transactional
+    public void complete(Long userId, Long missionId, String answer) {
+        MissionState missionState = missionStateRepository.findByMissionIdAndUserId(missionId, userId)
+                .orElseThrow(() -> new RuntimeException());
+
+        missionState.done();
+        missionState.updateAnswer(answer);
+    }
 }
