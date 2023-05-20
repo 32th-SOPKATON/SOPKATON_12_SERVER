@@ -37,5 +37,9 @@ public class MissionState {
     public void done() {
         this.state = State.DONE;
     }
+
+    public void updateAnswer(String answer) {
+        this.answer = answer;
+    }
 }
 
